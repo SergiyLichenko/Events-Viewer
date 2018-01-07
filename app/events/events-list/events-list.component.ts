@@ -1,11 +1,11 @@
 import { Component } from "@angular/core";
-import { EventService } from "./shared/event.service";
 import { OnInit } from "@angular/core";
-import { ToastrService } from "../common/toastr.service";
+import { ToastrService } from "../../common/toastr.service";
+import { EventService } from "../shared/event.service";
 
 @Component({
-  templateUrl: 'app/events/events-list.component.html',
-  providers: [ToastrService]
+  templateUrl: 'app/events/events-list/events-list.component.html',
+  providers: [ToastrService, EventService]
 })
 
 export class EventListComponent implements OnInit {

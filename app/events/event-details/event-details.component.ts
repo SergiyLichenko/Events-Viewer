@@ -6,7 +6,7 @@ import { ActivatedRoute } from "@angular/router";
 
 @Component({
     templateUrl: './app/events/event-details/event-details.component.html',
-    styleUrls: ['./app/events/event-details/event-details.component.html'],
+    styleUrls: ['./app/events/event-details/event-details.component.css'],
     providers: [EventService]
 })
 export class EventDetailsComponent implements OnInit {
