@@ -1,5 +1,4 @@
-import { Component } from '@angular/core'
-import { EventListComponent } from './events/events-list.component';
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'events-app',
