@@ -7,7 +7,7 @@ import { Injectable, Inject } from "@angular/core";
 
 
 @Injectable()
-export class EventRouteActivatorGuard implements CanActivate {
+export class EventDetailsGuard implements CanActivate {
 
     constructor(private _eventService: EventService,
         private _router: Router) { }

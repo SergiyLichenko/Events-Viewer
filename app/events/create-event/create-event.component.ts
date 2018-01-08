@@ -4,10 +4,12 @@ import { Router } from "@angular/router";
 @Component({
     templateUrl: "app/events/create-event/create-event.component.html"
 })
-export class CreateEventComponent{
-    constructor(private _router: Router){}
+export class CreateEventComponent {
+    isDirty: boolean = true;
 
-    cancelClick():void{
+    constructor(private _router: Router) { }
+
+    cancelClick(): void {
         this._router.navigate(["/events"]);
     }
 }
