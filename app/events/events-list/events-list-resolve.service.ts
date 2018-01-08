@@ -11,5 +11,4 @@ export class EventsListResolveService implements Resolve<any>{
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         return this._eventService.getEvents();
     }
-    
 }
