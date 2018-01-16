@@ -5,3 +5,4 @@ export * from "./events-list/events-list.component";
 export * from "./events-list/events-list-resolve.service";
 export * from "./event-thumbnail/event-thumbnail.component";
 export * from "./shared/index";
+export * from "./event-details/create-session/create-session.component"

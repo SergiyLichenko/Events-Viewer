@@ -10,7 +10,8 @@ import {
     EventListComponent,
     CreateEventComponent, 
     EventThumbnailComponent, 
-    EventDetailsComponent} from "./events/index"
+    EventDetailsComponent,
+    CreateSessionComponent} from "./events/index"
 
 import { EventsAppComponent } from "./events-app.component";
 import { NavBarComponent } from "./nav/navbar.component";
@@ -40,6 +41,7 @@ import { AuthService } from "./user/shared/auth.service";
     declarations: [EventsAppComponent,
         EventThumbnailComponent,
         NavBarComponent,
+        CreateSessionComponent,
         CreateEventComponent,
         EventDetailsComponent,
         Error404Component,
