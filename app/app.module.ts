@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule } from "@angular/router";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { 
     EventService, 
@@ -20,8 +21,11 @@ import { ToastrService } from "./common/toastr.service";
 import { AuthService } from "./user/shared/auth.service";
 
 
+
 @NgModule({
     imports: [BrowserModule,
+        ReactiveFormsModule,
+        FormsModule,
         RouterModule.forRoot(appRoutes)],
     providers: [
         EventDetailsGuard,

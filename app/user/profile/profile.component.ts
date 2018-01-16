@@ -12,6 +12,9 @@ import { Router } from "@angular/router";
 export class ProfileComponent implements OnInit {
     profileForm: FormGroup;
 
+    private firstName: FormControl;
+    private lastName: FormControl;
+
     constructor(private _authService: AuthService,
         private _router: Router) { }
 
@@ -19,17 +22,17 @@ export class ProfileComponent implements OnInit {
         if (!this._authService.currentUser)
             this._router.navigate(["user/login"]);
             
-        let firstName = new FormControl(
+        this.firstName = new FormControl(
             this._authService.currentUser.firstName,
             [Validators.required,
             Validators.pattern('[a-zA-Z].*')]);
-        let lastName = new FormControl(
+        this.lastName = new FormControl(
             this._authService.currentUser.lastName,
             Validators.required);
 
         this.profileForm = new FormGroup({
-            firstName: firstName,
-            lastName: lastName
+            firstName: this.firstName,
+            lastName: this.lastName
         });
     }
 
@@ -46,12 +49,12 @@ export class ProfileComponent implements OnInit {
     }
 
     validateFirstName() {
-        return this.profileForm.controls.firstName.valid ||
-            this.profileForm.controls.firstName.untouched;
+        return this.firstName.valid ||
+            this.firstName.untouched;
     }
 
     validateLastName() {
-        return this.profileForm.controls.lastName.valid ||
-            this.profileForm.controls.lastName.untouched;
+        return this.lastName.valid ||
+            this.lastName.untouched;
     }
 }
