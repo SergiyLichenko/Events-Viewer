@@ -20,6 +20,7 @@ import { Error404Component } from "./errors/404.component";
 import { appRoutes } from "./router";
 import { ToastrService } from "./common/toastr.service";
 import { AuthService } from "./user/shared/auth.service";
+import { SessionListComponent } from "./events/event-details/session-list/session-list.component";
 
 
 
@@ -44,6 +45,7 @@ import { AuthService } from "./user/shared/auth.service";
         CreateSessionComponent,
         CreateEventComponent,
         EventDetailsComponent,
+        SessionListComponent,
         Error404Component,
         EventListComponent],
     bootstrap: [EventsAppComponent]
