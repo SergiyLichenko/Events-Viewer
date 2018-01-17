@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { ISession } from "../../index";
+import { ISession, restrictedWords } from "../../index";
 
 
 @Component({
@@ -21,7 +21,7 @@ export class CreateSessionComponent implements OnInit {
         this.duration = new FormControl("", Validators.required);
         this.level = new FormControl("", Validators.required);
         this.abstract = new FormControl("", [Validators.required,
-        Validators.maxLength(400)]);
+        Validators.maxLength(400), restrictedWords(["john", "doe"])]);
 
         this.newSessionForm = new FormGroup({
             name: this.name,
@@ -32,15 +32,15 @@ export class CreateSessionComponent implements OnInit {
         });
     }
 
-    saveSession(sessionForm){
-        let session:ISession = {
+    saveSession(sessionForm) {
+        let session: ISession = {
             abstract: sessionForm.abstract,
             duration: +sessionForm.duration,
             level: sessionForm.level,
             name: sessionForm.name,
-            presenter:sessionForm.presenter,
+            presenter: sessionForm.presenter,
             voters: [],
-            id: undefined 
+            id: undefined
         };
         console.log(session);
     }
