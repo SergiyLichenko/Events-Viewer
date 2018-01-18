@@ -21,6 +21,7 @@ import { appRoutes } from "./router";
 import { ToastrService } from "./common/toastr.service";
 import { AuthService } from "./user/shared/auth.service";
 import { SessionListComponent } from "./events/event-details/session-list/session-list.component";
+import { CollapsibleWellComponent } from "./common/collapsible-well/collapsible-well.component";
 
 
 
@@ -42,6 +43,7 @@ import { SessionListComponent } from "./events/event-details/session-list/sessio
     declarations: [EventsAppComponent,
         EventThumbnailComponent,
         NavBarComponent,
+        CollapsibleWellComponent,
         CreateSessionComponent,
         CreateEventComponent,
         EventDetailsComponent,
