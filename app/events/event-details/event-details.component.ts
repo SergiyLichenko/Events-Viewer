@@ -12,7 +12,8 @@ import { IEvent, ISession } from "../index";
 export class EventDetailsComponent implements OnInit {
     event: IEvent;
     addMode: boolean = false;
-
+    filterBy: string = "all";
+    
     constructor(private _eventService: EventService,
         private _activatedRoute: ActivatedRoute) { }
 
@@ -34,7 +35,7 @@ export class EventDetailsComponent implements OnInit {
         this.addMode = false;
     }
 
-    onCancelSession(result:boolean){
+    onCancelSession(result: boolean) {
         this.addMode = false;
     }
 }
