@@ -19,11 +19,11 @@ import { NavBarComponent } from "./nav/navbar.component";
 import { Error404Component } from "./errors/404.component";
 
 import { appRoutes } from "./router";
-import { ToastrService } from "./common/toastr.service";
+import { TOASTR_TOKEN, IToastr } from "./common/toastr.service";
 import { AuthService } from "./user/shared/auth.service";
 import { SessionListComponent } from "./events/event-details/session-list/session-list.component";
 
-
+declare let toastr: IToastr;
 
 @NgModule({
     imports: [BrowserModule,
@@ -35,7 +35,10 @@ import { SessionListComponent } from "./events/event-details/session-list/sessio
         EventService,
         AuthService,
         EventsListResolveService,
-        ToastrService,
+        {
+            provide: TOASTR_TOKEN,
+            useValue: toastr
+        },
         {
             provide: 'canDeactivateCreateEvent',
             useValue: checkDirtyState
