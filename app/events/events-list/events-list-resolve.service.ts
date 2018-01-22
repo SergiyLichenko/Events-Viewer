@@ -6,9 +6,9 @@ import 'rxjs/Rx';
 @Injectable()
 export class EventsListResolveService implements Resolve<any>{
    
-    constructor(private _eventService: EventService){}
+    constructor(private eventService: EventService){}
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        return this._eventService.getEvents();
+        return this.eventService.getEvents();
     }
 }
