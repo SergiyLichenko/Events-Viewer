@@ -10,11 +10,14 @@ import { ISession } from "../../index";
 export class SessionListComponent implements OnChanges {
     @Input() sessions: ISession[];
     @Input() filterBy: string;
+    @Input() sortBy: string;
     visibleSessions: ISession[] = [];
 
     ngOnChanges(): void {
         if (this.sessions) {
             this.filterSessions(this.filterBy);
+            this.sortBy === 'name' ? this.visibleSessions.sort(this.sortByNameAsc) :
+                this.visibleSessions.sort(this.sortByVotesDesc);
         }
     }
 
@@ -27,5 +30,15 @@ export class SessionListComponent implements OnChanges {
                 return session.level.toLocaleLowerCase() === filter;
             });
         }
+    }
+
+    sortByNameAsc(first: ISession, second: ISession) {
+        if (first.name > second.name) return 1;
+        if (first.name === second.name) return 0;
+        return -1;
+    }
+
+    sortByVotesDesc(first: ISession, second: ISession) {
+        return second.voters.length - first.voters.length;
     }
 }
