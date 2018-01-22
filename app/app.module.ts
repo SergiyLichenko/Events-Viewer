@@ -11,7 +11,8 @@ import {
     CreateEventComponent, 
     EventThumbnailComponent, 
     EventDetailsComponent,
-    CreateSessionComponent} from "./events/index"
+    CreateSessionComponent,
+    DurationPipe} from "./events/index"
 
 import { EventsAppComponent } from "./events-app.component";
 import { NavBarComponent } from "./nav/navbar.component";
@@ -47,7 +48,8 @@ import { SessionListComponent } from "./events/event-details/session-list/sessio
         EventDetailsComponent,
         SessionListComponent,
         Error404Component,
-        EventListComponent],
+        EventListComponent,
+        DurationPipe],
     bootstrap: [EventsAppComponent]
 })
 export class AppModule {
