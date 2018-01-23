@@ -21,6 +21,16 @@
   <script src="node_modules/systemjs/dist/system.src.js"></script>
 
   <script src="systemjs.config.js"></script>
+
+  <script>
+    (function () {
+      var redirect = sessionStorage.redirect;
+      delete sessionStorage.redirect;
+      if (redirect && redirect != location.href) {
+        history.replaceState(null, null, redirect);
+      }
+    })();
+  </script>
   <script>
     System.import('app').catch(err => console.error(err));
   </script>
