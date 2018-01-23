@@ -12,13 +12,15 @@ import { IEvent, ISession } from "../index";
 export class EventDetailsComponent implements OnInit {
     event: IEvent;
     addMode: boolean = false;
-
-    constructor(private _eventService: EventService,
-        private _activatedRoute: ActivatedRoute) { }
+    filterBy: string = "all";
+    sortBy: string = "name";
+    
+    constructor(private eventService: EventService,
+        private activatedRoute: ActivatedRoute) { }
 
     ngOnInit() {
-        let id: string = this._activatedRoute.snapshot.params['id'];
-        this.event = this._eventService.getEvent(+id);
+        let id: string = this.activatedRoute.snapshot.params['id'];
+        this.event = this.eventService.getEvent(+id);
     }
 
     addSession(): void {
@@ -29,12 +31,12 @@ export class EventDetailsComponent implements OnInit {
         const nextId = 1 + Math.max.apply(null, this.event.sessions.map(x => x.id));
         session.id = nextId;
         this.event.sessions.push(session);
-        this._eventService.updateEvent(this.event);
+        this.eventService.updateEvent(this.event);
 
         this.addMode = false;
     }
 
-    onCancelSession(result:boolean){
+    onCancelSession(result: boolean) {
         this.addMode = false;
     }
 }

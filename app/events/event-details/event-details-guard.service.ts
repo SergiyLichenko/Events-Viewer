@@ -9,13 +9,13 @@ import { Injectable, Inject } from "@angular/core";
 @Injectable()
 export class EventDetailsGuard implements CanActivate {
 
-    constructor(private _eventService: EventService,
-        private _router: Router) { }
+    constructor(private eventService: EventService,
+        private router: Router) { }
 
     canActivate(route: ActivatedRouteSnapshot): boolean {
-        const eventExists = !!this._eventService.getEvent(+route.params['id']);
+        const eventExists = !!this.eventService.getEvent(+route.params['id']);
         if (!eventExists)
-            this._router.navigate(["/404"]);
+            this.router.navigate(["/404"]);
 
         return eventExists;
     }

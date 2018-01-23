@@ -9,16 +9,16 @@ import { EventService } from "../shared/event.service";
 export class CreateEventComponent {
     isDirty: boolean = true;
 
-    constructor(private _router: Router,
-        private _eventService: EventService) { }
+    constructor(private router: Router,
+        private eventService: EventService) { }
 
     cancelClick(): void {
-        this._router.navigate(["/events"]);
+        this.router.navigate(["/events"]);
     }
 
     saveEvent(createForm) {
-        this._eventService.saveEvent(createForm);
+        this.eventService.saveEvent(createForm);
         this.isDirty = false;
-        this._router.navigate(["/events"]);
+        this.router.navigate(["/events"]);
     }
 }
