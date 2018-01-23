@@ -13,14 +13,14 @@
   "dependencies": {
     "@angular/common": "4.0.0",
     "@angular/compiler": "4.0.0",
+    "@angular/cli": "^1.6.5",
+    "@angular/compiler-cli": "4.0.0",
     "@angular/core": "4.0.0",
     "@angular/forms": "4.0.0",
     "@angular/http": "4.0.0",
     "@angular/platform-browser": "4.0.0",
     "@angular/platform-browser-dynamic": "4.0.0",
     "@angular/router": "4.0.0",
-    "@angular/cli": "^1.6.5",
-    "@angular/compiler-cli": "^5.2.0",
     "typescript": "2.1.1",
     "core-js": "2.4.1",
     "ng2f-bootstrap": "^0.0.4",
@@ -32,11 +32,14 @@
   },
   "devDependencies": {
     "@angular/cli": "^1.6.5",
-    "@angular/compiler-cli": "^5.2.0",
+    "@angular/compiler-cli": "4.0.0",
     "@types/core-js": "0.9.34",
     "@types/node": "6.0.46",
     "concurrently": "3.2.0",
     "typescript": "2.1.1"
   },
-  "repository": {}
+  "repository": {},
+  "engines": {
+    "node": "8.9.3"
+  }
 }
