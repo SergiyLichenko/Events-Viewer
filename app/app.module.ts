@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import {
     EventService,
+    VoterService,
     EventDetailsGuard,
     EventsListResolveService,
     EventListComponent,
@@ -27,12 +28,12 @@ import {
 import { EventsAppComponent } from "./events-app.component";
 import { NavBarComponent } from "./nav/navbar.component";
 import { Error404Component } from "./errors/404.component";
+import { SessionListComponent } from "./events/event-details/session-list/session-list.component";
+import { CollapsibleWellComponent } from "./common/collapsible-well/collapsible-well.component";
 
 import { appRoutes } from "./router";
 
 import { AuthService } from "./user/shared/auth.service";
-import { SessionListComponent } from "./events/event-details/session-list/session-list.component";
-import { CollapsibleWellComponent } from "./common/collapsible-well/collapsible-well.component";
 
 declare let toastr: IToastr;
 declare let jQuery: Object;
@@ -46,6 +47,7 @@ declare let jQuery: Object;
         EventDetailsGuard,
         EventService,
         AuthService,
+        VoterService,
         EventsListResolveService,
         {
             provide: TOASTR_TOKEN,
