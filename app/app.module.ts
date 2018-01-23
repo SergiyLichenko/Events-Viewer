@@ -19,7 +19,8 @@ import {
     TOASTR_TOKEN,
     IToastr,
     JQ_TOKEN,
-    SimpleModalComponent
+    SimpleModalComponent,
+    ModalTriggerDirective
 } from "./common/index";
 
 import { EventsAppComponent } from "./events-app.component";
@@ -60,6 +61,7 @@ declare let jQuery: Object;
     declarations: [EventsAppComponent,
         EventThumbnailComponent,
         NavBarComponent,
+        ModalTriggerDirective,
         CollapsibleWellComponent,
         SimpleModalComponent,
         CreateSessionComponent,
