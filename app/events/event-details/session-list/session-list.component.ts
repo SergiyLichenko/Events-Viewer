@@ -41,4 +41,12 @@ export class SessionListComponent implements OnChanges {
     sortByVotesDesc(first: ISession, second: ISession) {
         return second.voters.length - first.voters.length;
     }
+
+    toggleVote(session: ISession){
+
+    }
+
+    userHasVoted(session: ISession): boolean{
+        return true;
+    }
 }
