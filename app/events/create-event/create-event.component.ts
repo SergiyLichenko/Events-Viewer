@@ -17,8 +17,9 @@ export class CreateEventComponent {
     }
 
     saveEvent(createForm) {
-        this.eventService.saveEvent(createForm);
-        this.isDirty = false;
-        this.router.navigate(["/events"]);
+        this.eventService.saveEvent(createForm).subscribe(event => {
+            this.isDirty = false;
+            this.router.navigate(["/events"]);
+        });
     }
 }
