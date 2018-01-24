@@ -2,11 +2,11 @@ import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule } from "@angular/router";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { HttpModule } from "@angular/http";
 
 import {
     EventService,
     VoterService,
-    EventDetailsGuard,
     EventsListResolveService,
     EventListComponent,
     CreateEventComponent,
@@ -15,7 +15,8 @@ import {
     CreateSessionComponent,
     UpvoteComponent,
     DurationPipe,
-    LocationValidator
+    LocationValidator,
+    EventResolver
 } from "./events/index";
 
 import {
@@ -43,10 +44,11 @@ declare let jQuery: Object;
     imports: [BrowserModule,
         ReactiveFormsModule,
         FormsModule,
+        HttpModule,
         RouterModule.forRoot(appRoutes)],
     providers: [
-        EventDetailsGuard,
         EventService,
+        EventResolver,
         AuthService,
         VoterService,
         EventsListResolveService,

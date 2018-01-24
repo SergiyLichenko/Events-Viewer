@@ -1,25 +1,30 @@
 import { Injectable } from "@angular/core";
-import { Subject } from "rxjs/RX";
 import { IEvent, ISession } from "../index";
 import { EventEmitter } from "@angular/core";
+import { Http, Response } from "@angular/http";
+import { Observable } from "rxjs/Observable";
+import { ObservableInput } from "rxjs/Observable";
 
 @Injectable()
 export class EventService {
 
-    getEvents(): Subject<IEvent[]> {
-        let subject = new Subject<IEvent[]>()
-
-        setTimeout(() => {
-            subject.next(EVENTS);
-            subject.complete();
-        }, 100);
-
-        return subject;
+    constructor(private http: Http) {
     }
 
-    getEvent(id: number): IEvent {
-        var event = EVENTS.find(event => event.id === id);
-        return event;
+    private onError(error: Response) {
+        return Observable.throw(error.statusText);
+    }
+
+    getEvents(): Observable<IEvent[]> {
+        return this.http.get("/api/events")
+            .map((x: Response) => <IEvent[]>x.json())
+            .catch(this.onError);;
+    }
+
+    getEvent(id: number): Observable<IEvent> {
+        return this.http.get("/api/events/" + id)
+            .map((x: Response) => <IEvent>x.json())
+            .catch(this.onError);
     }
 
     saveEvent(event) {
@@ -47,7 +52,7 @@ export class EventService {
 
             results = results.concat(matchingSessions);
         });
-        
+
         var emitter = new EventEmitter(true);
         setTimeout(() => {
             emitter.emit(results);

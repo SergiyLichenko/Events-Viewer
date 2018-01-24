@@ -1,6 +1,5 @@
 export * from "./create-event/create-event.component";
 export * from "./event-details/event-details.component";
-export * from "./event-details/event-details-guard.service";
 export * from "./events-list/events-list.component";
 export * from "./events-list/events-list-resolve.service";
 export * from "./event-thumbnail/event-thumbnail.component";
@@ -9,3 +8,4 @@ export * from "./event-details/create-session/create-session.component";
 export * from "./event-details/session-list/upvote/upvote.component";
 export * from "./event-details/session-list/upvote/voter.service";
 export * from "./create-event/location/location.validator";
+export * from "./shared/event-resolver/event-resolver.service";
