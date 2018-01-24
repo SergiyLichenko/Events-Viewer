@@ -14,7 +14,8 @@ import {
     EventDetailsComponent,
     CreateSessionComponent,
     UpvoteComponent,
-    DurationPipe
+    DurationPipe,
+    LocationValidator
 } from "./events/index";
 
 import {
@@ -65,6 +66,7 @@ declare let jQuery: Object;
         EventThumbnailComponent,
         NavBarComponent,
         ModalTriggerDirective,
+        LocationValidator,
         UpvoteComponent,
         CollapsibleWellComponent,
         SimpleModalComponent,

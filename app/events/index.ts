@@ -8,3 +8,4 @@ export * from "./shared/index";
 export * from "./event-details/create-session/create-session.component";
 export * from "./event-details/session-list/upvote/upvote.component";
 export * from "./event-details/session-list/upvote/voter.service";
+export * from "./create-event/location/location.validator";
