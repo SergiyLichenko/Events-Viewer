@@ -1,55 +1,54 @@
-import { Component, OnInit, Output } from "@angular/core";
-import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { ISession, restrictedWords } from "../../index";
-import { EventEmitter } from "@angular/core";
-
+import { Component, OnInit, Output } from '@angular/core';
+import { EventEmitter } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ISession, restrictedWords } from '../../index';
 
 @Component({
-    selector: "create-session",
-    templateUrl: "app/events/event-details/create-session/create-session.component.html",
-    styleUrls: ["app/events/event-details/create-session/create-session.component.css"]
+    selector: 'create-session',
+    templateUrl: 'app/events/event-details/create-session/create-session.component.html',
+    styleUrls: ['app/events/event-details/create-session/create-session.component.css'],
 })
 export class CreateSessionComponent implements OnInit {
-    newSessionForm: FormGroup;
-    name: FormControl;
-    presenter: FormControl;
-    duration: FormControl;
-    level: FormControl;
-    abstract: FormControl;
-    @Output() onSaveSession: EventEmitter<ISession> = new EventEmitter<ISession>();
-    @Output() onCancelSession: EventEmitter<boolean> = new EventEmitter();
+    public newSessionForm: FormGroup;
+    public name: FormControl;
+    public presenter: FormControl;
+    public duration: FormControl;
+    public level: FormControl;
+    public abstract: FormControl;
+    @Output() public onSaveSession: EventEmitter<ISession> = new EventEmitter<ISession>();
+    @Output() public onCancelSession: EventEmitter<boolean> = new EventEmitter();
 
-    ngOnInit(): void {
-        this.name = new FormControl("", Validators.required);
-        this.presenter = new FormControl("", Validators.required);
-        this.duration = new FormControl("", Validators.required);
-        this.level = new FormControl("", Validators.required);
-        this.abstract = new FormControl("", [Validators.required,
-        Validators.maxLength(400), restrictedWords(["john", "doe"])]);
+    public ngOnInit(): void {
+        this.name = new FormControl('', Validators.required);
+        this.presenter = new FormControl('', Validators.required);
+        this.duration = new FormControl('', Validators.required);
+        this.level = new FormControl('', Validators.required);
+        this.abstract = new FormControl('', [Validators.required,
+        Validators.maxLength(400), restrictedWords(['john', 'doe'])]);
 
         this.newSessionForm = new FormGroup({
             name: this.name,
             presenter: this.presenter,
             duration: this.duration,
             level: this.level,
-            abstract: this.abstract
+            abstract: this.abstract,
         });
     }
 
-    saveSession(sessionForm) {
-        let session: ISession = {
+    public saveSession(sessionForm) {
+        const session: ISession = {
             abstract: sessionForm.abstract,
             duration: +sessionForm.duration,
             level: sessionForm.level,
             name: sessionForm.name,
             presenter: sessionForm.presenter,
             voters: [],
-            id: undefined
+            id: undefined,
         };
         this.onSaveSession.emit(session);
     }
 
-    cancelSession(){
+    public cancelSession() {
         this.onCancelSession.emit(true);
     }
 }

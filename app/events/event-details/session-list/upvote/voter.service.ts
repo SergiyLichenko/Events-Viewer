@@ -1,8 +1,7 @@
-import { Injectable } from "@angular/core";
-import { ISession } from "../../../index";
-import { Http, Headers, Response, RequestOptions } from "@angular/http";
-import { Observable } from "rxjs/Observable";
-
+import { Injectable } from '@angular/core';
+import { Headers, Http, RequestOptions, Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import { ISession } from '../../../index';
 
 @Injectable()
 export class VoterService {
@@ -14,8 +13,8 @@ export class VoterService {
         return Observable.throw(error.statusText);
     }
 
-    deleteVoter(session: ISession, username: string, eventId: number): void {
-        session.voters = session.voters.filter(x => x !== username);
+    public deleteVoter(session: ISession, username: string, eventId: number): void {
+        session.voters = session.voters.filter((x) => x !== username);
 
         const url = `/api/events/${eventId}/sessions/${session.id}/voters/${username}`;
 
@@ -23,14 +22,14 @@ export class VoterService {
             .subscribe();
     }
 
-    addVoter(session: ISession, username: string, eventId: number): void {
+    public addVoter(session: ISession, username: string, eventId: number): void {
         session.voters.push(username);
         
         const headers = new Headers({
-            "Content-Type": "application/json"
+            'Content-Type': 'application/json',
         });
         const options = new RequestOptions({
-            headers: headers
+            headers,
         });
         const url = `/api/events/${eventId}/sessions/${session.id}/voters/${username}`;
 
@@ -39,8 +38,8 @@ export class VoterService {
             .subscribe();
     }
 
-    userHasVoted(session: ISession, username: string): boolean {
-        if (!session.voters) return false;
-        return session.voters.some(x => x === username);
+    public userHasVoted(session: ISession, username: string): boolean {
+        if (!session.voters) { return false; }
+        return session.voters.some((x) => x === username);
     }
 }

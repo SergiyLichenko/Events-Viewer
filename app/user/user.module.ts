@@ -1,12 +1,12 @@
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { RouterModule } from "@angular/router";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { LoginComponent } from './login/login.component';
   
-import { ProfileComponent } from "./profile/profile.component";
-import { LoginComponent } from "./login/login.component";
+import { ProfileComponent } from './profile/profile.component';
 
-import { userRoutes } from "./user.routes"
+import { userRoutes } from './user.routes';
 
 @NgModule({
     declarations: [
@@ -17,7 +17,7 @@ import { userRoutes } from "./user.routes"
         ReactiveFormsModule,
         CommonModule,
         RouterModule.forChild(userRoutes)],
-    providers: []
+    providers: [],
 })
 export class UserModule {
 

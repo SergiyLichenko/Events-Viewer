@@ -1,69 +1,46 @@
-import { NgModule } from "@angular/core";
-import { BrowserModule } from "@angular/platform-browser";
-import { RouterModule } from "@angular/router";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { HttpModule } from "@angular/http";
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 
 import {
-    EventService,
-    VoterService,
-    EventsListResolveService,
-    EventListComponent,
     CreateEventComponent,
-    EventThumbnailComponent,
-    EventDetailsComponent,
     CreateSessionComponent,
-    UpvoteComponent,
     DurationPipe,
+    EventDetailsComponent,
+    EventListComponent,
+    EventResolver,
+    EventService,
+    EventsListResolveService,
+    EventThumbnailComponent,
     LocationValidator,
-    EventResolver
-} from "./events/index";
+    UpvoteComponent,
+    VoterService,
+} from './events/index';
 
 import {
-    TOASTR_TOKEN,
     IToastr,
     JQ_TOKEN,
+    ModalTriggerDirective,
     SimpleModalComponent,
-    ModalTriggerDirective
-} from "./common/index";
+    TOASTR_TOKEN,
+} from './common/index';
 
-import { EventsAppComponent } from "./events-app.component";
-import { NavBarComponent } from "./nav/navbar.component";
-import { Error404Component } from "./errors/404.component";
-import { SessionListComponent } from "./events/event-details/session-list/session-list.component";
-import { CollapsibleWellComponent } from "./common/collapsible-well/collapsible-well.component";
+import { CollapsibleWellComponent } from './common/collapsible-well/collapsible-well.component';
+import { Error404Component } from './errors/404.component';
+import { EventsAppComponent } from './events-app.component';
+import { SessionListComponent } from './events/event-details/session-list/session-list.component';
+import { NavBarComponent } from './nav/navbar.component';
 
-import { appRoutes } from "./router";
+import { appRoutes } from './router';
 
-import { AuthService } from "./user/shared/auth.service";
+import { AuthService } from './user/shared/auth.service';
 
 declare let toastr: IToastr;
 declare let jQuery: Object;
 
 @NgModule({
-    imports: [BrowserModule,
-        ReactiveFormsModule,
-        FormsModule,
-        HttpModule,
-        RouterModule.forRoot(appRoutes)],
-    providers: [
-        EventService,
-        EventResolver,
-        AuthService,
-        VoterService,
-        EventsListResolveService,
-        {
-            provide: TOASTR_TOKEN,
-            useValue: toastr
-        },
-        {
-            provide: JQ_TOKEN,
-            useValue: jQuery
-        },
-        {
-            provide: 'canDeactivateCreateEvent',
-            useValue: checkDirtyState
-        }],
     declarations: [EventsAppComponent,
         EventThumbnailComponent,
         NavBarComponent,
@@ -79,7 +56,32 @@ declare let jQuery: Object;
         Error404Component,
         EventListComponent,
         DurationPipe],
-    bootstrap: [EventsAppComponent]
+
+    imports: [BrowserModule,
+        ReactiveFormsModule,
+        FormsModule,
+        HttpModule,
+        RouterModule.forRoot(appRoutes)],
+    providers: [
+        EventService,
+        EventResolver,
+        AuthService,
+        VoterService,
+        EventsListResolveService,
+        {
+            provide: TOASTR_TOKEN,
+            useValue: toastr,
+        },
+        {
+            provide: JQ_TOKEN,
+            useValue: jQuery,
+        },
+        {
+            provide: 'canDeactivateCreateEvent',
+            useValue: checkDirtyState,
+        }],
+
+    bootstrap: [EventsAppComponent],
 })
 export class AppModule {
 
@@ -87,7 +89,7 @@ export class AppModule {
 
 function checkDirtyState(component: CreateEventComponent) {
     if (component.isDirty)
-        return window.confirm("You have not saved this event, do you really want to cancel?");
+        return window.confirm('You have not saved this event, do you really want to cancel?');
 
     return true;
 }

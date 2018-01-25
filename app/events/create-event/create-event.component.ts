@@ -1,25 +1,25 @@
-import { Component } from "@angular/core";
-import { Router } from "@angular/router";
-import { EventService } from "../shared/event.service";
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { EventService } from '../shared/event.service';
 
 @Component({
-    templateUrl: "app/events/create-event/create-event.component.html",
-    styleUrls: ["app/events/create-event/create-event.component.css"]
+    templateUrl: 'app/events/create-event/create-event.component.html',
+    styleUrls: ['app/events/create-event/create-event.component.css'],
 })
 export class CreateEventComponent {
-    isDirty: boolean = true;
+    public isDirty: boolean = true;
 
     constructor(private router: Router,
-        private eventService: EventService) { }
+                private eventService: EventService) { }
 
-    cancelClick(): void {
-        this.router.navigate(["/events"]);
+    public cancelClick(): void {
+        this.router.navigate(['/events']);
     }
 
-    saveEvent(createForm) {
-        this.eventService.saveEvent(createForm).subscribe(event => {
+    public saveEvent(createForm) {
+        this.eventService.saveEvent(createForm).subscribe((event) => {
             this.isDirty = false;
-            this.router.navigate(["/events"]);
+            this.router.navigate(['/events']);
         });
     }
 }
