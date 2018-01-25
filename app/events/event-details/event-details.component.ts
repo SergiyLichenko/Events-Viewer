@@ -19,7 +19,7 @@ export class EventDetailsComponent implements OnInit {
 
     public ngOnInit() {
         this.activatedRoute.data.forEach((data) => {
-            this.event = data.event;
+            this.event = data['event'];
             this.addMode = false;
         });
     }
