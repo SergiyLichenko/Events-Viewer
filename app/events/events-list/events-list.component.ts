@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { IEvent } from '../index';
 
 @Component({
-  templateUrl: 'app/events/events-list/events-list.component.html',
+  templateUrl: './events-list.component.html',
 })
 
 export class EventListComponent implements OnInit {

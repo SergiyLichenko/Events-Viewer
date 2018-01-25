@@ -6,8 +6,8 @@ import { IToastr, TOASTR_TOKEN } from '../../common/toastr.service';
 import { AuthService } from '../shared/auth.service';
 
 @Component({
-    templateUrl: 'app/user/profile/profile.component.html',
-    styleUrls: ['app/user/profile/profile.component.css'],
+    templateUrl: './profile.component.html',
+    styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
     public profileForm: FormGroup;

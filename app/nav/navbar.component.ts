@@ -4,14 +4,14 @@ import { AuthService } from '../user/shared/auth.service';
 
 @Component({
     selector: 'nav-bar',
-    templateUrl: 'app/nav/navbar.component.html',
-    styleUrls: ['app/nav/navbar.component.css'],
+    templateUrl: './navbar.component.html',
+    styleUrls: ['./navbar.component.css'],
 })
 export class NavBarComponent {
     public searchTerm: string = '';
     public foundSessions: ISession[];
 
-    constructor(private authService: AuthService,
+    constructor(public authService: AuthService,
                 private eventService: EventService) { }
 
     public searchSessions(searchTerm: string) {

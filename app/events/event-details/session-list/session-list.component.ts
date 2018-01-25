@@ -2,11 +2,12 @@ import { Component, Input, OnChanges } from '@angular/core';
 import { AuthService } from '../../../user/shared/auth.service';
 import { ISession } from '../../index';
 import { VoterService } from './upvote/voter.service';
+import { SimpleChanges } from '@angular/core';
 
 @Component({
     selector: 'session-list',
-    templateUrl: 'app/events/event-details/session-list/session-list.component.html',
-    styleUrls: ['app/events/event-details/session-list/session-list.component.css'],
+    templateUrl: './session-list.component.html',
+    styleUrls: ['./session-list.component.css'],
 })
 export class SessionListComponent implements OnChanges {
     @Input() public sessions: ISession[];
@@ -19,7 +20,7 @@ export class SessionListComponent implements OnChanges {
                 private authService: AuthService) {
     }
 
-    public ngOnChanges(): void {
+    public ngOnChanges(changes: SimpleChanges): void {
         if (this.sessions) {
             this.filterSessions(this.filterBy);
             this.sortBy === 'name' ? this.visibleSessions.sort(this.sortByNameAsc) :

@@ -61,7 +61,7 @@ describe('SessionListComponent', () => {
             component.eventId = 4;
 
             //act
-            component.ngOnChanges();
+            component.ngOnChanges(null);
             fixture.detectChanges();
 
             //assert

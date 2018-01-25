@@ -38,8 +38,8 @@ import { appRoutes } from './router';
 
 import { AuthService } from './user/shared/auth.service';
 
-declare let toastr: IToastr;
-declare let jQuery: Object;
+let toastr: IToastr = window['toastr'];
+let jQuery: Object = window['$'];
 
 @NgModule({
     declarations: [EventsAppComponent,
@@ -88,7 +88,7 @@ export class AppModule {
 
 }
 
-function checkDirtyState(component: CreateEventComponent) {
+export function checkDirtyState(component: CreateEventComponent) {
     if (component.isDirty)
         return window.confirm('You have not saved this event, do you really want to cancel?');
 

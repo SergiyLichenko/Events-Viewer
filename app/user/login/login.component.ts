@@ -3,14 +3,17 @@ import { Router } from '@angular/router';
 import { AuthService } from '../shared/auth.service';
 
 @Component({
-    templateUrl: 'app/user/login/login.component.html',
-    styleUrls: ['app/user/login/login.component.css'],
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
     public invalidLogin = false;
+    public mouseOverLogin = false;
+    public userName: string;
+    public password: string;
 
     constructor(private authService: AuthService,
-                private router: Router) { }
+        private router: Router) { }
 
     public login(formValues) {
         this.authService.loginUser(

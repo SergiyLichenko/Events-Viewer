@@ -3,12 +3,14 @@ import { Router } from '@angular/router';
 import { EventService } from '../shared/event.service';
 
 @Component({
-    templateUrl: 'app/events/create-event/create-event.component.html',
-    styleUrls: ['app/events/create-event/create-event.component.css'],
+    moduleId: module.id,
+    templateUrl: './create-event.component.html',
+    styleUrls: ['./create-event.component.css'],
 })
 export class CreateEventComponent {
     public isDirty: boolean = true;
-
+    event:any = { location: { } }
+    
     constructor(private router: Router,
                 private eventService: EventService) { }
 

@@ -3,8 +3,8 @@ import { } from '@angular/core/src/event_emitter';
 
 @Component({
     selector: 'upvote',
-    templateUrl: 'app/events/event-details/session-list/upvote/upvote.component.html',
-    styleUrls: ['app/events/event-details/session-list/upvote/upvote.component.css'],
+    templateUrl: './upvote.component.html',
+    styleUrls: ['./upvote.component.css'],
 })
 export class UpvoteComponent {
     @Input() public count: number;

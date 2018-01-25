@@ -5,8 +5,8 @@ import { ISession, restrictedWords } from '../../index';
 
 @Component({
     selector: 'create-session',
-    templateUrl: 'app/events/event-details/create-session/create-session.component.html',
-    styleUrls: ['app/events/event-details/create-session/create-session.component.css'],
+    templateUrl: './create-session.component.html',
+    styleUrls: ['./create-session.component.css'],
 })
 export class CreateSessionComponent implements OnInit {
     public newSessionForm: FormGroup;

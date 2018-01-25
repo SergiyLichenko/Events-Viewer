@@ -23,7 +23,7 @@ describe('SessionListComponent', () => {
             component.eventId = 3;
 
             //act
-            component.ngOnChanges();
+            component.ngOnChanges(null);
 
             //assert
             expect(component.visibleSessions.length).toBe(2);
@@ -41,7 +41,7 @@ describe('SessionListComponent', () => {
             component.eventId = 3;
 
             //act
-            component.ngOnChanges();
+            component.ngOnChanges(null);
 
             //assert
             expect(component.visibleSessions[0].name).toBe('session 1');

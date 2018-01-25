@@ -3,8 +3,8 @@ import { JQ_TOKEN } from './index';
 
 @Component({
     selector: 'simple-modal',
-    templateUrl: 'app/common/simple-modal.component.html',
-    styleUrls: ['app/common/simple-modal.component.css'],
+    templateUrl: './simple-modal.component.html',
+    styleUrls: ['./simple-modal.component.css'],
 })
 export class SimpleModalComponent {
     @Input() public title: string;

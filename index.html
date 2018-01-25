@@ -18,10 +18,8 @@
   <script src="node_modules/toastr/build/toastr.min.js"></script>
   <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
   <script src="node_modules/zone.js/dist/zone.js"></script>
-  <script src="node_modules/systemjs/dist/system.src.js"></script>
 
-  <script src="systemjs.config.js"></script>
-
+  <script>window.module = 'aot';</script>
   <script>
     (function () {
       var redirect = sessionStorage.redirect;
@@ -31,13 +29,11 @@
       }
     })();
   </script>
-  <script>
-    System.import('app').catch(err => console.error(err));
-  </script>
 </head>
 
 <body class="container">
   <events-app></events-app>
 </body>
+<script src="dist/build.js"></script>
 
 </html>
