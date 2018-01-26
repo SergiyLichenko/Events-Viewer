@@ -1,0 +1,73 @@
+{
+  "_from": "ng2f-server",
+  "_id": "ng2f-server@1.0.0",
+  "_inBundle": false,
+  "_integrity": "sha1-de/RiIJ7M0AtDgLNKubam6jB3ps=",
+  "_location": "/ng2f-server",
+  "_phantomChildren": {
+    "content-type": "1.0.4",
+    "cookie-signature": "1.0.6",
+    "depd": "1.1.2",
+    "destroy": "1.0.4",
+    "escape-html": "1.0.3",
+    "forwarded": "0.1.2",
+    "merge-descriptors": "1.0.1",
+    "methods": "1.1.2",
+    "mime-types": "2.1.17",
+    "on-finished": "2.3.0",
+    "parseurl": "1.3.2",
+    "path-to-regexp": "0.1.7",
+    "statuses": "1.3.1",
+    "type-is": "1.6.15",
+    "unpipe": "1.0.0"
+  },
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "ng2f-server",
+    "name": "ng2f-server",
+    "escapedName": "ng2f-server",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/ng2f-server/-/ng2f-server-1.0.0.tgz",
+  "_shasum": "75efd188827b33402d0e02cd2ae6da9ba8c1de9b",
+  "_spec": "ng2f-server",
+  "_where": "D:\\Repos\\new-events\\new-events",
+  "author": {
+    "name": "Jim Cooper"
+  },
+  "bugs": {
+    "url": "https://github.com/jmcooper/ng2f-server/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "body-parser": "1.15.0",
+    "cookie-parser": "1.4.1",
+    "express": "4.13.4",
+    "express-session": "1.13.0",
+    "morgan": "1.7.0",
+    "passport": "0.3.2",
+    "passport-local": "1.0.0"
+  },
+  "deprecated": false,
+  "description": "An express server for use in an Angular 2 Fundamentals course",
+  "homepage": "https://github.com/jmcooper/ng2f-server#readme",
+  "license": "ISC",
+  "main": "server/server.js",
+  "name": "ng2f-server",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/jmcooper/ng2f-server.git"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.0"
+}
