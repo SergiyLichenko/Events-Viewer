@@ -5,6 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "npm run server",
+    "postinstall": "npm run build",
     "build": "ng build --aot -prod",
     "server": "node server/ng2f-server/server.js",
     "test": "ng test",
