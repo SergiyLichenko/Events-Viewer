@@ -19,6 +19,7 @@ import {
     EventsListResolveService,
     VoterService,
     EventService,
+    SessionDetailsComponent,
 } from './events/index';
 
 import {
@@ -51,6 +52,7 @@ let jQuery: Object = window['$'];
         UpvoteComponent,
         CollapsibleWellComponent,
         SimpleModalComponent,
+        SessionDetailsComponent,
         CreateSessionComponent,
         CreateEventComponent,
         EventDetailsComponent,
@@ -62,9 +64,9 @@ let jQuery: Object = window['$'];
     imports: [BrowserModule,
         ReactiveFormsModule,
         UserModule,
-        AppRoutingModule,
         FormsModule,
-        HttpModule],
+        HttpModule,
+        AppRoutingModule,],
     providers: [
         EventService,
         EventResolver,

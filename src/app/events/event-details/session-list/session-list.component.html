@@ -9,6 +9,7 @@
             <div well-title>
                 {{session.name}}
                 <i *ngIf="session.voters.length > 3" class="glyphicon glyphicon-fire" style="color:red"></i>
+                <a [routerLink]="['/events', eventId, 'sessions', session.id]">View Details</a>
             </div>
             <div well-body>
                 <h6>{{session.presenter}}</h6>

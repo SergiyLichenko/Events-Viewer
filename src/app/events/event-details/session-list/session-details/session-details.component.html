@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-11">
+            <h2>{{session?.name | uppercase}} </h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div>
+                <strong>Presenter:</strong> {{session?.presenter}}</div>
+            <div>
+                <strong>Duration:</strong> {{session?.duration | duration}}</div>
+            <div>
+                <strong>Level:</strong> {{session?.level}}</div>
+            <div *ngIf="session?.voters && session?.voters.length > 0">
+                <strong>Voters:</strong>
+                <div *ngFor="let voter of session?.voters">
+                    <strong>- {{voter}}</strong>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="session?.voters" class="col-md-6">
+            <strong>Abstract:</strong>
+            <div> {{session?.abstract}} </div>
+        </div>
+    </div>
+</div>

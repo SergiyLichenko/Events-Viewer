@@ -9,6 +9,6 @@ export class EventResolver implements Resolve<any> {
     }
 
     public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        return this.eventService.getEvent(+route.params['id']);
+        return this.eventService.getEvent(+route.params['eventId']);
     }
 }
