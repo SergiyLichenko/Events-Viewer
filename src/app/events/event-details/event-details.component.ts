@@ -22,6 +22,14 @@ export class EventDetailsComponent implements OnInit {
             this.event = data['event'];
             this.addMode = false;
         });
+
+        const filterBy = this.activatedRoute.snapshot.queryParams['filterBy'];
+        if (filterBy)
+            this.filterBy = filterBy;
+
+        const sortBy = this.activatedRoute.snapshot.queryParams['sortBy'];
+        if (sortBy)
+            this.sortBy = sortBy;
     }
 
     public addSession(): void {

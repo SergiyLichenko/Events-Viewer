@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="session">
     <div class="row">
         <div class="col-md-11">
             <h2>{{session?.name | uppercase}} </h2>
@@ -23,5 +23,10 @@
             <strong>Abstract:</strong>
             <div> {{session?.abstract}} </div>
         </div>
+    </div>
+    <br>
+    <br>
+    <div class="row">
+        <button type="button" class="btn btn-default" (click)="onBackClick()">Back</button>
     </div>
 </div>
