@@ -1,6 +1,7 @@
 {
   "name": "events-viewer",
   "version": "0.0.0",
+  "author": "Sergiy Lichenko",
   "license": "MIT",
   "scripts": {
     "start": "npm run server",

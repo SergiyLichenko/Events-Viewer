@@ -64,7 +64,7 @@ let jQuery: Object = window['$'];
         UserModule,
         FormsModule,
         HttpModule,
-        RouterModule.forRoot(appRoutes)],
+        RouterModule.forRoot(appRoutes, {useHash: true})],
     providers: [
         EventService,
         EventResolver,
