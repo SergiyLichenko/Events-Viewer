@@ -3,11 +3,12 @@ import { EventEmitter } from '@angular/core';
 import { Headers, Http, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { IEvent, ISession } from '../index';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class EventService {
 
-    private serverUrl: string = 'http://localhost:4201';
+    private serverUrl: string = environment.serverUrl;
 
     constructor(private http: Http) {
     }

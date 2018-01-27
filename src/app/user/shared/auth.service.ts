@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { Headers, Http, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { IUser } from './user.model';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class AuthService {
     public currentUser: IUser;
-    private serverUrl: string = 'http://localhost:4201';
+    private serverUrl: string = environment.serverUrl;
     private headers = new Headers({
         'Content-Type': 'application/json',
     });
