@@ -10,9 +10,9 @@ app.use(function (req, res, next) {
     var whitelist = ['http://localhost:4200', 'https://localhost:4200', 'http://localhost:4201']
     var origin = req.headers.origin;
 
-    if(whitelist.indexOf(origin) > -1){
+    if (whitelist.indexOf(origin) > -1) {
         res.setHeader('Access-Control-Allow-Origin', origin);
-   }
+    }
 
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
@@ -20,6 +20,7 @@ app.use(function (req, res, next) {
 
     next();
 });
+
 
 require('./expressConfig')(app);
 
