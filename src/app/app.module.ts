@@ -37,6 +37,7 @@ import { appRoutes } from './router';
 
 import { AuthService } from './user/shared/auth.service';
 import { EventsAppComponent } from './app.component';
+import { UserModule } from './user/user.module';
 
 let toastr: IToastr = window['toastr'];
 let jQuery: Object = window['$'];
@@ -60,6 +61,7 @@ let jQuery: Object = window['$'];
 
     imports: [BrowserModule,
         ReactiveFormsModule,
+        UserModule,
         FormsModule,
         HttpModule,
         RouterModule.forRoot(appRoutes)],

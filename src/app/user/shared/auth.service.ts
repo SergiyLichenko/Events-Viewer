@@ -6,6 +6,7 @@ import { IUser } from './user.model';
 @Injectable()
 export class AuthService {
     public currentUser: IUser;
+    private serverUrl: string = 'http://localhost:4201';
     private headers = new Headers({
         'Content-Type': 'application/json',
     });
@@ -23,7 +24,7 @@ export class AuthService {
             password,
         };
 
-        return this.http.post('/api/login', loginInfo, this.options)
+        return this.http.post(this.serverUrl+'/api/login', loginInfo, this.options)
             .do((x) => {
                 if (x)
                     this.currentUser = x.json().user as IUser;
@@ -31,7 +32,7 @@ export class AuthService {
     }
 
     public logoutUser() {
-        return this.http.post('/api/logout', {}, this.options).do((x) => {
+        return this.http.post(this.serverUrl + '/api/logout', {}, this.options).do((x) => {
             this.currentUser = undefined;
         });
     }
@@ -44,12 +45,12 @@ export class AuthService {
         this.currentUser.firstName = firstName;
         this.currentUser.lastName = lastName;
 
-        return this.http.put(`/api/users/${this.currentUser.id}`,
+        return this.http.put(this.serverUrl + `/api/users/${this.currentUser.id}`,
             this.currentUser, this.options);
     }
 
     public checkAuthentication() {
-        return this.http.get('/api/currentIdentity')
+        return this.http.get(this.serverUrl + '/api/currentIdentity')
             .map((x: any) => x._body ? x.json() : {})
             .do((x) => {
                 if (x.userName)

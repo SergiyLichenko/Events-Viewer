@@ -7,6 +7,8 @@ import { IEvent, ISession } from '../index';
 @Injectable()
 export class EventService {
 
+    private serverUrl: string = 'http://localhost:4201';
+
     constructor(private http: Http) {
     }
 
@@ -15,13 +17,13 @@ export class EventService {
     }
 
     public getEvents(): Observable<IEvent[]> {
-        return this.http.get('/api/events')
+        return this.http.get(this.serverUrl + '/api/events')
             .map((x: Response) => x.json() as IEvent[])
             .catch(this.onError);
     }
 
     public getEvent(id: number): Observable<IEvent> {
-        return this.http.get('/api/events/' + id)
+        return this.http.get(this.serverUrl + '/api/events/' + id)
             .map((x: Response) => x.json() as IEvent)
             .catch(this.onError);
     }
@@ -34,13 +36,13 @@ export class EventService {
             headers,
         });
 
-        return this.http.post('/api/events', event, request)
+        return this.http.post(this.serverUrl + '/api/events', event, request)
             .map((x: Response) => x.json())
             .catch(this.onError);
     }
 
     public searchSessions(searchTerm: string) {
-        return this.http.get('/api/sessions/search?search=' + searchTerm)
+        return this.http.get(this.serverUrl + '/api/sessions/search?search=' + searchTerm)
             .map((x: Response) => x.json())
             .catch(this.onError);
     }

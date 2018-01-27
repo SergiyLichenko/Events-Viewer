@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "start": "npm run server",
-    "startDev": "npm run postinstall && npm run start",
+    "startUI": "ng serve",
     "postinstall": "ng build --aot -prod",
     "server": "node server/ng2f-server/server.js",
     "test": "ng test",

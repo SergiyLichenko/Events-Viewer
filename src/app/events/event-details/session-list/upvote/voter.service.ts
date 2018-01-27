@@ -6,6 +6,8 @@ import { ISession } from '../../../index';
 @Injectable()
 export class VoterService {
 
+    private serverUrl: string = 'http://localhost:4201';
+
     constructor(private http: Http) {
     }
 
@@ -16,7 +18,7 @@ export class VoterService {
     public deleteVoter(session: ISession, username: string, eventId: number): void {
         session.voters = session.voters.filter((x) => x !== username);
 
-        const url = `/api/events/${eventId}/sessions/${session.id}/voters/${username}`;
+        const url = this.serverUrl + `/api/events/${eventId}/sessions/${session.id}/voters/${username}`;
 
         this.http.delete(url).catch(this.onError)
             .subscribe();
@@ -31,7 +33,7 @@ export class VoterService {
         const options = new RequestOptions({
             headers,
         });
-        const url = `/api/events/${eventId}/sessions/${session.id}/voters/${username}`;
+        const url = this.serverUrl + `/api/events/${eventId}/sessions/${session.id}/voters/${username}`;
 
         this.http.post(url, JSON.stringify({}), options)
             .catch(this.onError)
