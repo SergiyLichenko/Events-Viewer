@@ -20,6 +20,7 @@ import {
     VoterService,
     EventService,
     SessionDetailsComponent,
+    SessionDetailsResolverService,
 } from './events/index';
 
 import {
@@ -71,6 +72,7 @@ let jQuery: Object = window['$'];
         EventService,
         EventResolver,
         AuthService,
+        SessionDetailsResolverService,
         VoterService,
         EventsListResolveService,
         {

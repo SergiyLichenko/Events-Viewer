@@ -10,3 +10,4 @@ export * from './event-details/session-list/upvote/voter.service';
 export * from './create-event/location/location.validator';
 export * from './shared/event-resolver/event-resolver.service';
 export * from './event-details/session-list/session-details/session-details.component';
+export * from './event-details/session-list/session-details/session-details-resolver.service';

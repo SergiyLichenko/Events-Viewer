@@ -13,15 +13,15 @@ export class SessionDetailsComponent implements OnInit {
 
     constructor(private eventService: EventService,
         private router: Router,
-        private activatedRoute: ActivatedRoute) { }
+        private activatedRoute: ActivatedRoute) {
+        activatedRoute.data.subscribe(x => {
+            this.session = x['session'];
+        });
+    }
 
     ngOnInit(): void {
         this.activatedRoute.params.subscribe(params => {
             this.eventId = +params['eventId'];
-            this.eventService.getEvent(this.eventId).subscribe(x => {
-                const sessionId = params['sessionId'];
-                this.session = x.sessions.find(x => x.id === +sessionId);
-            });
         });
     }
 
