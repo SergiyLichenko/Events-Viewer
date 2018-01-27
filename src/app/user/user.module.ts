@@ -3,10 +3,10 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
-  
+import { UserRoutingModule } from './user-routing.module';
+
 import { ProfileComponent } from './profile/profile.component';
 
-import { userRoutes } from './user.routes';
 
 @NgModule({
     declarations: [
@@ -16,7 +16,7 @@ import { userRoutes } from './user.routes';
         FormsModule,
         ReactiveFormsModule,
         CommonModule,
-        RouterModule.forChild(userRoutes)],
+        UserRoutingModule],
     providers: [],
 })
 export class UserModule {

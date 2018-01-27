@@ -3,41 +3,41 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import './rxjs-extensions';
+import { UserModule } from './user/user.module';
+import { AppRoutingModule } from './app-routing.module';
 
 import {
     CreateEventComponent,
     CreateSessionComponent,
-    DurationPipe,
     EventDetailsComponent,
     EventListComponent,
-    EventResolver,
-    EventService,
-    EventsListResolveService,
     EventThumbnailComponent,
-    LocationValidator,
     UpvoteComponent,
+    DurationPipe,
+    LocationValidator,
+    EventResolver,
+    EventsListResolveService,
     VoterService,
+    EventService,
 } from './events/index';
 
 import {
     IToastr,
     JQ_TOKEN,
+    TOASTR_TOKEN,
     ModalTriggerDirective,
     SimpleModalComponent,
-    TOASTR_TOKEN,
 } from './common/index';
 
 import { CollapsibleWellComponent } from './common/collapsible-well/collapsible-well.component';
 import { Error404Component } from './errors/404.component';
 import { SessionListComponent } from './events/event-details/session-list/session-list.component';
 import { NavBarComponent } from './nav/navbar.component';
-
-import { appRoutes } from './router';
+import { EventsAppComponent } from './app.component';
 
 import { AuthService } from './user/shared/auth.service';
-import { EventsAppComponent } from './app.component';
-import { UserModule } from './user/user.module';
+
+import './rxjs-extensions';
 
 let toastr: IToastr = window['toastr'];
 let jQuery: Object = window['$'];
@@ -62,9 +62,9 @@ let jQuery: Object = window['$'];
     imports: [BrowserModule,
         ReactiveFormsModule,
         UserModule,
+        AppRoutingModule,
         FormsModule,
-        HttpModule,
-        RouterModule.forRoot(appRoutes, {useHash: true})],
+        HttpModule],
     providers: [
         EventService,
         EventResolver,
@@ -87,7 +87,6 @@ let jQuery: Object = window['$'];
     bootstrap: [EventsAppComponent],
 })
 export class AppModule {
-
 }
 
 export function checkDirtyState(component: CreateEventComponent) {

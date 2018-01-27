@@ -1,22 +1,30 @@
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 import {
-    CreateEventComponent,
-    CreateSessionComponent,
-    EventDetailsComponent,
     EventListComponent,
-    EventResolver,
     EventsListResolveService,
+    EventDetailsComponent,
+    CreateEventComponent,
+    EventResolver,
+    CreateSessionComponent
 } from './events/index';
-
-import { Routes } from '@angular/router';
 import { Error404Component } from './errors/404.component';
-import { userRoutes } from './user/user.routes';
 
-export const appRoutes: Routes = [
+const appRoutes: Routes = [
     { path: 'events', component: EventListComponent, resolve: { events: EventsListResolveService } },
     { path: 'events/new', component: CreateEventComponent, canDeactivate: ['canDeactivateCreateEvent'] },
     { path: 'events/:id', component: EventDetailsComponent, resolve: { event: EventResolver } },
     { path: 'events/session/new', component: CreateSessionComponent },
-    { path: 'user', children: userRoutes },
+    { path: 'user', loadChildren: './user/user.module#UserModule' },
     { path: '', redirectTo: '/events', pathMatch: 'full' },
     { path: '**', component: Error404Component }
 ];
+
+@NgModule({
+    imports: [
+        RouterModule.forRoot(appRoutes, { useHash: true })
+    ],
+    exports:[RouterModule]
+})
+export class AppRoutingModule {
+}
