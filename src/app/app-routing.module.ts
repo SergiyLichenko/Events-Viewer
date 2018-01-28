@@ -16,14 +16,19 @@ import { SessionListResolverService } from './events/event-details/session-list/
 
 const appRoutes: Routes = [
     { path: '', redirectTo: '/events', pathMatch: 'full' },
-    { path: 'events', component: EventListComponent, resolve: { events: EventsListResolveService } },
-    { path: 'events/new', component: CreateEventComponent, canDeactivate: ['canDeactivateCreateEvent'] },
     {
-        path: 'events/:eventId', component: EventDetailsComponent, resolve: { event: EventResolver },
+        path: 'events',
         children: [
-            { path: '', pathMatch: 'full', component: SessionListComponent, resolve: { sessions: SessionListResolverService } },
-            { path: 'sessions/new', component: CreateSessionComponent },
-            { path: 'sessions/:sessionId', component: SessionDetailsComponent, resolve: { session: SessionDetailsResolverService } }
+            { path: '', component: EventListComponent, resolve: { events: EventsListResolveService } },
+            { path: 'new', component: CreateEventComponent, canDeactivate: ['canDeactivateCreateEvent'] },
+            {
+                path: ':eventId', component: EventDetailsComponent, resolve: { event: EventResolver },
+                children: [
+                    { path: '', pathMatch: 'full', component: SessionListComponent, resolve: { sessions: SessionListResolverService } },
+                    { path: 'sessions/new', component: CreateSessionComponent },
+                    { path: 'sessions/:sessionId', component: SessionDetailsComponent, resolve: { session: SessionDetailsResolverService } }
+                ]
+            },
         ]
     },
     { path: 'user', loadChildren: './user/user.module#UserModule' },
