@@ -38,8 +38,10 @@ import { NavBarComponent } from './nav/navbar.component';
 import { EventsAppComponent } from './app.component';
 
 import { AuthService } from './user/shared/auth.service';
+import { SessionListResolverService } from './events/event-details/session-list/session-list-resolver.service';
 
 import './rxjs-extensions';
+
 
 let toastr: IToastr = window['toastr'];
 let jQuery: Object = window['$'];
@@ -73,6 +75,7 @@ let jQuery: Object = window['$'];
         EventResolver,
         AuthService,
         SessionDetailsResolverService,
+        SessionListResolverService,
         VoterService,
         EventsListResolveService,
         {

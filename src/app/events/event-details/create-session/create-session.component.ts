@@ -3,6 +3,9 @@ import { EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ISession } from '../../shared/session.model';
 import { restrictedWords } from '../../shared/restricted-words.validator';
+import { Router, ActivatedRoute } from '@angular/router';
+import { EventService } from '../../shared/event.service';
+import { IEvent } from '../../shared/event.model';
 
 @Component({
     selector: 'create-session',
@@ -16,8 +19,20 @@ export class CreateSessionComponent implements OnInit {
     public duration: FormControl;
     public level: FormControl;
     public abstract: FormControl;
-    @Output() public onSaveSession: EventEmitter<ISession> = new EventEmitter<ISession>();
-    @Output() public onCancelSession: EventEmitter<boolean> = new EventEmitter();
+
+    private event: IEvent;
+
+    constructor(private router: Router,
+        private eventService: EventService,
+        private activatedRoute: ActivatedRoute) {
+        activatedRoute.parent.data.subscribe(x => {
+            this.event = <IEvent>x['event'];
+        });
+    }
+
+    private navigateToSessionList() {
+        this.router.navigate(['/events', this.event.id, 'sessions', 'list']);
+    }
 
     public ngOnInit(): void {
         this.name = new FormControl('', Validators.required);
@@ -37,6 +52,8 @@ export class CreateSessionComponent implements OnInit {
     }
 
     public saveSession(sessionForm) {
+
+        const nextId = 1 + Math.max.apply(null, this.event.sessions.map((x) => x.id));
         const session: ISession = {
             abstract: sessionForm.abstract,
             duration: +sessionForm.duration,
@@ -44,12 +61,15 @@ export class CreateSessionComponent implements OnInit {
             name: sessionForm.name,
             presenter: sessionForm.presenter,
             voters: [],
-            id: undefined,
+            id: nextId,
         };
-        this.onSaveSession.emit(session);
+
+        this.event.sessions.push(session);
+        this.eventService.saveEvent(this.event).subscribe();
+        this.navigateToSessionList();
     }
 
     public cancelSession() {
-        this.onCancelSession.emit(true);
+        this.navigateToSessionList();
     }
 }

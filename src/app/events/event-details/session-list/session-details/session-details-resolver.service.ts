@@ -15,7 +15,7 @@ export class SessionDetailsResolverService implements Resolve<ISession> {
     }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ISession> {
-        const eventId = +route.params['eventId'];
+        const eventId = +route.parent.params['eventId'];
         const sessionId = route.params['sessionId'];
 
         if (!eventId && eventId <= 0) this.onError();

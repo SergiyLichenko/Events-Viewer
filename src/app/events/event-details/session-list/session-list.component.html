@@ -1,3 +1,24 @@
+<div class="row" style="margin-bottom: 10px; margin-top:5px;">
+    <div class="col-md-2">
+        <h3 style="margin:0">Sessions</h3>
+    </div>
+    <div class="col-md-9">
+        <span class="options-text">Sort by</span>
+        <div class="btn-group btn-group-sm" style="margin-right: 20px; margin-left: 20px;">
+            <button class="btn btn-default" [class.active]="sortBy==='name'" (click)="onChange(filterBy, 'name')">By Name</button>
+            <button class="btn btn-default" [class.active]="sortBy==='votes'" (click)="onChange(filterBy, 'votes')">By Votes</button>
+        </div>
+
+        <span class="options-text spacer"> Filter by</span>
+        <div class="btn-group btn-group-sm">
+            <button class="btn btn-default" [class.active]="filterBy==='all'" (click)="onChange('all', sortBy)">All</button>
+            <button class="btn btn-default" [class.active]="filterBy==='beginner'" (click)="onChange('beginner', sortBy)">Beginner</button>
+            <button class="btn btn-default" [class.active]="filterBy==='intermediate'" (click)="onChange('intermediate', sortBy)">Intermediate</button>
+            <button class="btn btn-default" [class.active]="filterBy==='advanced'" (click)="onChange('advanced', sortBy)">Advanced</button>
+        </div>
+    </div>
+</div>
+
 <div class="row" *ngFor="let session of visibleSessions">
     <div class="col-md-1">
         <div *ngIf="authService.isAuthenticated()">

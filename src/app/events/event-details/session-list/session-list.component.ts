@@ -1,26 +1,44 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from '../../../user/shared/auth.service';
 import { ISession } from '../../index';
 import { VoterService } from './upvote/voter.service';
 import { SimpleChanges } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'session-list',
     templateUrl: './session-list.component.html',
     styleUrls: ['./session-list.component.css']
 })
-export class SessionListComponent implements OnChanges {
-    @Input() public sessions: ISession[];
-    @Input() public filterBy: string;
-    @Input() public sortBy: string;
-    @Input() public eventId: number;
+export class SessionListComponent {
+    public sessions: ISession[];
+    public filterBy: string;
+    public sortBy: string;
+    public eventId: number;
     public visibleSessions: ISession[] = [];
 
     constructor(private voterService: VoterService,
-                private authService: AuthService) {
+        private activatedRoute: ActivatedRoute,
+        private authService: AuthService) {
+        this.eventId = activatedRoute.parent.snapshot.params['eventId'];
+
+        let sortBy = activatedRoute.snapshot.queryParams['sortBy'];
+        if (!sortBy) sortBy = 'name';
+        this.sortBy = sortBy;
+
+        let filterBy = activatedRoute.snapshot.queryParams['filterBy'];
+        if (!filterBy) filterBy = 'all';
+        this.filterBy = filterBy;
+
+        activatedRoute.data.subscribe(x => {
+            this.sessions = <ISession[]>x['sessions'];
+            this.onChange(filterBy, sortBy);
+        });
     }
 
-    public ngOnChanges(changes: SimpleChanges): void {
+    public onChange(filter: string, sort: string): void {
+        this.filterBy = filter;
+        this.sortBy = sort;
         if (this.sessions) {
             this.filterSessions(this.filterBy);
             this.sortBy === 'name' ? this.visibleSessions.sort(this.sortByNameAsc) :

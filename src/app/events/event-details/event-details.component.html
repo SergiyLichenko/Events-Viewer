@@ -16,7 +16,7 @@
             <div>
                 <strong>Price:</strong> ${{event?.price | currency : 'USD' : 'symbol'}}</div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6" *ngIf="event?.location">
             <address>
                 <strong>Address:</strong>
                 <br /> {{event?.location?.address}}
@@ -24,30 +24,18 @@
             </address>
         </div>
     </div>
+
     <hr>
 
-    <div class="row" style="margin-bottom: 10px; margin-top:5px;">
-        <div class="col-md-2">
-            <h3 style="margin:0">Sessions</h3>
-        </div>
-        <div class="col-md-7">
-            <div class="btn-group btn-group-sm" style="margin-right: 20px; margin-left: 20px;">
-                <button class="btn btn-default" [class.active]="sortBy==='name'" (click)="sortBy = 'name'">By Name</button>
-                <button class="btn btn-default" [class.active]="sortBy==='votes'" (click)="sortBy = 'votes'">By Votes</button>
-            </div>
+    <ul class="nav nav-tabs">
+        <li [ngClass]="{'active': tabNumber === 0}" (click)="tabNumber = 0">
+            <a [routerLink]="['sessions', 'list']">List</a>
+        </li>
+        <li>
+            <a [ngClass]="{'active': tabNumber === 1}" (click)="tabNumber = 1" [routerLink]="['sessions', 'new']">Create</a>
+        </li>
+    </ul>
+    <br>
 
-            <div class="btn-group btn-group-sm">
-                <button class="btn btn-default" [class.active]="filterBy==='all'" (click)="filterBy = 'all'">All</button>
-                <button class="btn btn-default" [class.active]="filterBy==='beginner'" (click)="filterBy = 'beginner'">Beginner</button>
-                <button class="btn btn-default" [class.active]="filterBy==='intermediate'" (click)="filterBy = 'intermediate'">Intermediate</button>
-                <button class="btn btn-default" [class.active]="filterBy==='advanced'" (click)="filterBy = 'advanced'">Advanced</button>
-            </div>
-        </div>
-        <div class="col-md-2">
-            <a (click)="addSession()">{{addMode? "Show All Sessions" : "Add Session"}}</a>
-        </div>
-    </div>
-
-    <session-list [eventId]="event?.id" [sortBy]="sortBy" [filterBy]="filterBy" *ngIf="!addMode" [sessions]="event?.sessions"></session-list>
-    <create-session (onCancelSession)="onCancelSession($event)" (onSaveSession)="onSaveSession($event)" *ngIf="addMode"></create-session>
+    <router-outlet></router-outlet>
 </div>
