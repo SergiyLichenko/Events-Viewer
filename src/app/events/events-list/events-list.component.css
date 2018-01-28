@@ -1,0 +1,16 @@
+div.row {
+    animation-duration: .5s;
+    animation-name: slideIn;
+    animation-fill-mode: backwards;
+    transition: tranform .5s ease;
+}
+
+@keyframes slideIn{
+    from {
+        transform: translate(-200px)
+    }
+
+    to{
+        transform: translate(0px)
+    }
+}

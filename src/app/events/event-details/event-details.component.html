@@ -14,7 +14,7 @@
             <div>
                 <strong>Time:</strong> {{event?.time}}</div>
             <div>
-                <strong>Price:</strong> ${{event?.price | currency : 'USD' : 'symbol'}}</div>
+                <strong>Price:</strong> {{event?.price | currency : 'USD' : 'symbol'}}</div>
         </div>
         <div class="col-md-6" *ngIf="event?.location">
             <address>
@@ -28,11 +28,11 @@
     <hr>
 
     <ul class="nav nav-tabs">
-        <li [ngClass]="{'active': tabNumber === '0'}" (click)="tabNumber = '0'">
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
             <a [routerLink]="['/events', event.id]">List</a>
         </li>
-        <li>
-            <a [ngClass]="{'active': tabNumber === '1'}" (click)="tabNumber = '1'" [routerLink]="['sessions', 'new']">Create</a>
+        <li routerLinkActive="active">
+            <a [routerLink]="['sessions', 'new']">Create</a>
         </li>
     </ul>
     <br>

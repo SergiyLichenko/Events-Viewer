@@ -3,7 +3,7 @@ import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@a
 import { EventService } from '../../../shared/event.service';
 import { ISession } from '../../../shared/session.model';
 import { Observable } from 'rxjs/Observable';
-
+import 'rxjs/add/operator/delay';
 
 @Injectable()
 export class SessionDetailsResolverService implements Resolve<ISession> {
@@ -14,13 +14,7 @@ export class SessionDetailsResolverService implements Resolve<ISession> {
         this.router.navigate(['/error']);
     }
 
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ISession> {
-        const eventId = +route.parent.params['eventId'];
-        const sessionId = route.params['sessionId'];
-
-        if (!eventId && eventId <= 0) this.onError();
-        if (!sessionId && sessionId <= 0) this.onError();
-
+    private handleResolve(eventId: number, sessionId: number): Observable<ISession> {
         return this.eventService.getEvent(eventId).map(event => {
             if (!event) Observable.throw(event);
 
@@ -32,5 +26,15 @@ export class SessionDetailsResolverService implements Resolve<ISession> {
             this.onError();
             return Observable.of(error);
         });
+    }
+
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ISession> {
+        const eventId = +route.parent.params['eventId'];
+        const sessionId = route.params['sessionId'];
+
+        if (!eventId && eventId <= 0) this.onError();
+        if (!sessionId && sessionId <= 0) this.onError();
+
+        return this.handleResolve(eventId, sessionId).delay(1000);
     }
 }

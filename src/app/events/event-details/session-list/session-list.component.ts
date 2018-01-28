@@ -3,7 +3,7 @@ import { AuthService } from '../../../user/shared/auth.service';
 import { ISession } from '../../index';
 import { VoterService } from './upvote/voter.service';
 import { SimpleChanges } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, Event, NavigationStart, NavigationCancel, NavigationError, ResolveEnd, ActivationEnd } from '@angular/router';
 
 @Component({
     selector: 'session-list',
@@ -16,9 +16,11 @@ export class SessionListComponent {
     public sortBy: string;
     public eventId: number;
     public visibleSessions: ISession[] = [];
+    public loading: boolean = false;
 
     constructor(private voterService: VoterService,
         private activatedRoute: ActivatedRoute,
+        private router: Router,
         private authService: AuthService) {
         this.eventId = activatedRoute.parent.snapshot.params['eventId'];
 
@@ -34,6 +36,18 @@ export class SessionListComponent {
             this.sessions = <ISession[]>x['sessions'];
             this.onChange(filterBy, sortBy);
         });
+
+        router.events.subscribe(this.handleRouterEvent.bind(this));
+    }
+
+    private handleRouterEvent(event: Event) {
+        if (event instanceof NavigationStart)
+            this.loading = true;
+        if (event instanceof ResolveEnd ||
+            event instanceof ActivationEnd ||
+            event instanceof NavigationCancel ||
+            event instanceof NavigationError)
+            this.loading = false;
     }
 
     public onChange(filter: string, sort: string): void {
