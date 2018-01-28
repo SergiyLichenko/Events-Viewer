@@ -9,7 +9,7 @@ import { IEvent } from '../index';
 })
 export class EventDetailsComponent implements OnInit {
     public event: IEvent;
-    public tabNumber: 0;
+    public tabNumber = '0';
 
     constructor(private activatedRoute: ActivatedRoute) { }
 

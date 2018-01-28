@@ -28,11 +28,11 @@
     <hr>
 
     <ul class="nav nav-tabs">
-        <li [ngClass]="{'active': tabNumber === 0}" (click)="tabNumber = 0">
+        <li [ngClass]="{'active': tabNumber === '0'}" (click)="tabNumber = '0'">
             <a [routerLink]="['sessions', 'list']">List</a>
         </li>
         <li>
-            <a [ngClass]="{'active': tabNumber === 1}" (click)="tabNumber = 1" [routerLink]="['sessions', 'new']">Create</a>
+            <a [ngClass]="{'active': tabNumber === '1'}" (click)="tabNumber = '1'" [routerLink]="['sessions', 'new']">Create</a>
         </li>
     </ul>
     <br>
