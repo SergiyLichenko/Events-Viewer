@@ -1,6 +1,6 @@
 # Events Viewer
 
-This application is build with Angular 5 and TypeScript and enables to view upcoming events for a user  
+This application is build with Angular 5 / TypeScript and enables to view upcoming events for a user  
 Check this [demo](https://events-viewer.herokuapp.com/) (Note: first load may take some time)
 
 ## Preview
