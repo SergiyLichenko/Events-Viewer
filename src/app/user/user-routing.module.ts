@@ -7,7 +7,7 @@ import { ProfileCanDeactivateService } from './profile-can-deactivate.service';
 
 const userRoutes: Routes = [
     {
-        path: 'user',
+        path: '',
         children: [
             { path: 'profile', component: ProfileComponent , canActivate: [ProfileGuardService], canDeactivate: [ProfileCanDeactivateService] },
             { path: 'login', component: LoginComponent }

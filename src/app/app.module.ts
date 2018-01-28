@@ -3,7 +3,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { UserModule } from './user/user.module';
 import { AppRoutingModule } from './app-routing.module';
 
 import {
@@ -68,7 +67,6 @@ let jQuery: Object = window['$'];
 
     imports: [BrowserModule,
         ReactiveFormsModule,
-        UserModule,
         FormsModule,
         HttpModule,
         AppRoutingModule,],
