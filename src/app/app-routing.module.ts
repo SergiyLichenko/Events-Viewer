@@ -21,8 +21,7 @@ const appRoutes: Routes = [
     {
         path: 'events/:eventId', component: EventDetailsComponent, resolve: { event: EventResolver },
         children: [
-            { path: '', redirectTo: 'sessions/list', pathMatch: 'full' },
-            { path: 'sessions/list', component: SessionListComponent, resolve: { sessions: SessionListResolverService } },
+            { path: '', pathMatch: 'full', component: SessionListComponent, resolve: { sessions: SessionListResolverService } },
             { path: 'sessions/new', component: CreateSessionComponent },
             { path: 'sessions/:sessionId', component: SessionDetailsComponent, resolve: { session: SessionDetailsResolverService } }
         ]

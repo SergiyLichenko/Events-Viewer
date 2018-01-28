@@ -24,7 +24,7 @@ export class SessionDetailsComponent implements OnInit {
     }
 
     onViewAllClick(): void {
-        this.router.navigate(['/events', this.eventId, 'sessions', 'list'], {
+        this.router.navigate(['/events', this.eventId], {
             queryParamsHandling: 'preserve'
         });
     }

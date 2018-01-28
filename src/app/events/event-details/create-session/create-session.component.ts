@@ -31,7 +31,7 @@ export class CreateSessionComponent implements OnInit {
     }
 
     private navigateToSessionList() {
-        this.router.navigate(['/events', this.event.id, 'sessions', 'list']);
+        this.router.navigate(['/events', this.event.id]);
     }
 
     public ngOnInit(): void {
