@@ -12,10 +12,8 @@ To clone this repository use command `git clone https://github.com/sergiylichenk
 ## Default Credentials
 
 To login into application use following credentials:  
-`  
-  username: admin,  
-  password: 1  
-`  
+`username: admin,`  
+`password: 1 `  
 
 ## Install Packages
 
