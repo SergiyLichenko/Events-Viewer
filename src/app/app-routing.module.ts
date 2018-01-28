@@ -2,18 +2,18 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {
     EventListComponent,
-    EventsListResolveService,
     EventDetailsComponent,
     CreateEventComponent,
     EventResolver,
     CreateSessionComponent,
     SessionDetailsComponent,
+    EventsListResolveService,
     SessionDetailsResolverService
 } from './events/index';
 import { Error404Component } from './errors/404.component';
 import { SessionListComponent } from './events/event-details/session-list/session-list.component';
-import { SessionListResolverService } from './events/event-details/session-list/session-list-resolver.service';
 import { EventDetailsPopupComponent } from './events/events-list/event-details-popup/event-details-popup.component';
+import { SessionListResolverService } from './events/event-details/session-list/session-list-resolver.service';
 
 const appRoutes: Routes = [
     { path: '', redirectTo: '/events', pathMatch: 'full' },
@@ -33,7 +33,6 @@ const appRoutes: Routes = [
             },
         ]
     },
-    { path: 'user', loadChildren: './user/user.module#UserModule' },
     { path: 'error', component: Error404Component },
     { path: '**', component: Error404Component }
 ];

@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { UserRoutingModule } from './user-routing.module';
 
 import { ProfileComponent } from './profile/profile.component';
+import { ProfileGuardService } from './profile-guard.service';
 
 
 @NgModule({
@@ -17,7 +18,7 @@ import { ProfileComponent } from './profile/profile.component';
         ReactiveFormsModule,
         CommonModule,
         UserRoutingModule],
-    providers: [],
+    providers: [ProfileGuardService],
 })
 export class UserModule {
 

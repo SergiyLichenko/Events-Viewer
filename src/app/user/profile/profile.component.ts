@@ -20,9 +20,6 @@ export class ProfileComponent implements OnInit {
                 private router: Router) { }
 
     public ngOnInit(): void {
-        if (!this.authService.currentUser)
-            this.router.navigate(['user/login']);
-
         this.firstName = new FormControl(
             this.authService.currentUser.firstName,
             [Validators.required,

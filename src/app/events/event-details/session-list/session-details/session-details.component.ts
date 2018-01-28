@@ -4,7 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
-    templateUrl: './session-details.component.html'
+    templateUrl: './session-details.component.html',
+    styleUrls: ['./session-details.component.css']
 })
 export class SessionDetailsComponent implements OnInit {
     public session: ISession;
