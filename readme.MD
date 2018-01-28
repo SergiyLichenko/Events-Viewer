@@ -1,27 +1,36 @@
-# EventsViewer
+# Events Viewer
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.5.
+This application is build with Angular 5 and TypeScript and enables to view upcoming events for a user  
+Check this [demo](https://events-viewer.herokuapp.com/) (Note: first load may take some time)
 
-## Development server
+## Preview
+![](https://github.com/SergiyLichenko/events-viewer/blob/master/src/assets/images/ng-preview.png)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Clone Repository
+To clone this repository use command `git clone https://github.com/sergiylichenko/events-viewer`
 
-## Code scaffolding
+## Default Credentials
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+To login into application use following credentials:  
+`username: admin`  
+`password: 1 `  
 
-## Build
+## Install Packages
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+To install node packages run `npm install`
+
+## Starting UI
+
+Run `npm run startUI` for starting user interface. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+## Starting server
+
+Run `npm run server` for launching backend server. Server will start on `http://localhost:4201/`
+
+## Production Mode
+
+Run `npm run postinstall` to create source files in `dist` folder. After that run `npm run server` and open `http://localhost:4201`
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Run `npm test` to execute the unit tests via [Karma](https://karma-runner.github.io)
