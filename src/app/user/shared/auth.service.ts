@@ -6,7 +6,7 @@ import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class AuthService {
-    public currentUser: IUser;
+    public currentUser: IUser = null;
     private serverUrl: string = environment.serverUrl;
     private headers = new Headers({
         'Content-Type': 'application/json',
@@ -25,7 +25,7 @@ export class AuthService {
             password: password,
         };
 
-        return this.http.post(this.serverUrl+'/api/login', loginInfo, this.options)
+        return this.http.post(this.serverUrl + '/api/login', loginInfo, this.options)
             .do((x) => {
                 if (x)
                     this.currentUser = x.json().user as IUser;
@@ -54,8 +54,8 @@ export class AuthService {
         return this.http.get(this.serverUrl + '/api/currentIdentity')
             .map((x: any) => x._body ? x.json() : {})
             .do((x) => {
-                if (x.userName)
-                    this.currentUser = x;
+                if (x.userName) this.currentUser = x;
+                else this.currentUser = undefined;
             });
     }
 }
