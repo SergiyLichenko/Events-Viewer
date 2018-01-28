@@ -5,6 +5,7 @@ Check this [demo](https://events-viewer.herokuapp.com/) (Note: first load may ta
 
 ## Preview
 ![](https://github.com/SergiyLichenko/events-viewer/blob/master/src/assets/images/ng-preview.png)
+![](https://github.com/SergiyLichenko/events-viewer/blob/master/src/assets/images/ng-preview-2.png)
 
 ## Clone Repository
 To clone this repository use command `git clone https://github.com/sergiylichenko/events-viewer`
