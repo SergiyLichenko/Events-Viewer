@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IToastr, TOASTR_TOKEN } from '../../common/toastr.service';
 import { AuthService } from '../shared/auth.service';
+import { IUser } from '../shared/user.model';
 
 @Component({
     templateUrl: './profile.component.html',
@@ -14,10 +15,11 @@ export class ProfileComponent implements OnInit {
 
     private firstName: FormControl;
     private lastName: FormControl;
+    private initialUser: IUser;
 
     constructor(private authService: AuthService,
-                @Inject(TOASTR_TOKEN) private toastr: IToastr,
-                private router: Router) { }
+        @Inject(TOASTR_TOKEN) private toastr: IToastr,
+        private router: Router) { }
 
     public ngOnInit(): void {
         this.firstName = new FormControl(
@@ -32,6 +34,8 @@ export class ProfileComponent implements OnInit {
             firstName: this.firstName,
             lastName: this.lastName,
         });
+
+        this.initialUser = Object.assign({}, this.authService.currentUser);
     }
 
     public cancel() {
@@ -44,7 +48,10 @@ export class ProfileComponent implements OnInit {
         this.authService.updateCurrentUser(
             profileForm.firstName,
             profileForm.lastName)
-            .subscribe((x) => this.toastr.success('Profile saved!'));
+            .subscribe((x) => {
+                this.toastr.success('Profile saved!');
+                this.initialUser = Object.assign({}, this.authService.currentUser);
+            });
     }
 
     public validateFirstName() {
@@ -58,8 +65,13 @@ export class ProfileComponent implements OnInit {
     }
 
     public onLogout() {
-        this.authService.logoutUser().subscribe((x)=> {
+        this.authService.logoutUser().subscribe((x) => {
             this.router.navigate(['/user/login']);
         });
+    }
+
+    public isDirty() {
+        return this.initialUser.firstName !== this.firstName.value ||
+            this.initialUser.lastName !== this.lastName.value;
     }
 }

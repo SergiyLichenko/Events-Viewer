@@ -7,6 +7,7 @@ import { UserRoutingModule } from './user-routing.module';
 
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileGuardService } from './profile-guard.service';
+import { ProfileCanDeactivateService } from './profile-can-deactivate.service';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { ProfileGuardService } from './profile-guard.service';
         ReactiveFormsModule,
         CommonModule,
         UserRoutingModule],
-    providers: [ProfileGuardService],
+    providers: [ProfileGuardService,
+        ProfileCanDeactivateService],
 })
 export class UserModule {
 
