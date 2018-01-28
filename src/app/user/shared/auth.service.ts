@@ -22,7 +22,7 @@ export class AuthService {
 
         const loginInfo = {
             username: userName,
-            password,
+            password: password,
         };
 
         return this.http.post(this.serverUrl+'/api/login', loginInfo, this.options)

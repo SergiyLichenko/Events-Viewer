@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { IEvent } from '../../shared/event.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     templateUrl: './event-details-popup.component.html',
@@ -10,7 +10,8 @@ import { ActivatedRoute } from '@angular/router';
 export class EventDetailsPopupComponent implements OnInit {
     public event: IEvent;
 
-    constructor(private activatedRoute: ActivatedRoute) {
+    constructor(private activatedRoute: ActivatedRoute,
+        private router: Router) {
 
     }
 
@@ -18,5 +19,9 @@ export class EventDetailsPopupComponent implements OnInit {
         this.activatedRoute.data.forEach((data) => {
             this.event = data['event'];
         });
+    }
+
+    onClose() {
+        this.router.navigate(['/events', { outlets: { details: null } }]);
     }
 }

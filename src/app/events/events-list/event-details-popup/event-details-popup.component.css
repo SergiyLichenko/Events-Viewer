@@ -35,3 +35,9 @@ a {
 .session-block {
     margin-left: 0px
 }
+
+i{
+    float: right;
+    margin-left: 30px;
+    cursor: pointer;
+}

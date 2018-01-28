@@ -4,6 +4,7 @@
             <h2>{{event?.name | uppercase}} </h2>
         </div>
         <div class="col-md-4">
+            <i (click)="onClose()" class="glyphicon glyphicon-remove"></i>
             <a [routerLink]="['/events', event?.id]">View Details</a>
         </div>
     </div>
