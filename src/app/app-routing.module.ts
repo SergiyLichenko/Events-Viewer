@@ -13,6 +13,7 @@ import {
 import { Error404Component } from './errors/404.component';
 import { SessionListComponent } from './events/event-details/session-list/session-list.component';
 import { SessionListResolverService } from './events/event-details/session-list/session-list-resolver.service';
+import { EventDetailsPopupComponent } from './events/events-list/event-details-popup/event-details-popup.component';
 
 const appRoutes: Routes = [
     { path: '', redirectTo: '/events', pathMatch: 'full' },
@@ -20,6 +21,7 @@ const appRoutes: Routes = [
         path: 'events',
         children: [
             { path: '', component: EventListComponent, resolve: { events: EventsListResolveService } },
+            { path: ':eventId', component: EventDetailsPopupComponent, outlet: 'details', resolve: { event: EventResolver } },
             { path: 'new', component: CreateEventComponent, canDeactivate: ['canDeactivateCreateEvent'] },
             {
                 path: ':eventId', component: EventDetailsComponent, resolve: { event: EventResolver },

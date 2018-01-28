@@ -1,9 +1,10 @@
-<div class="container col-md-7">
-    <img [src]="event?.imageUrl" [alt]="event?.name" class="event-image">
-
+<div class="well container col-md-4">
     <div class="row">
-        <div class="col-md-11">
+        <div class="col-md-8">
             <h2>{{event?.name | uppercase}} </h2>
+        </div>
+        <div class="col-md-4">
+            <a [routerLink]="['/events', event?.id]">View Details</a>
         </div>
     </div>
 
@@ -25,17 +26,10 @@
         </div>
     </div>
 
-    <hr>
-
-    <ul class="nav nav-tabs">
-        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-            <a [routerLink]="['/events', event.id]">List</a>
-        </li>
-        <li routerLinkActive="active">
-            <a [routerLink]="['sessions', 'new']">Create</a>
-        </li>
-    </ul>
-    <br>
-
-    <router-outlet></router-outlet>
+    <div class="row session-block" *ngIf="event.sessions && event.sessions.length > 0">
+        <span class="sessions">Sessions</span>
+        <div class="col-md-12" *ngFor="let session of event?.sessions">
+            <a class="session-link" [routerLink]="['/events', event.id,'sessions', session.id]">{{session.name}}</a>
+        </div>
+    </div>
 </div>

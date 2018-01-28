@@ -34,6 +34,7 @@ import {
 import { CollapsibleWellComponent } from './common/collapsible-well/collapsible-well.component';
 import { Error404Component } from './errors/404.component';
 import { SessionListComponent } from './events/event-details/session-list/session-list.component';
+import { EventDetailsPopupComponent } from './events/events-list/event-details-popup/event-details-popup.component';
 import { NavBarComponent } from './nav/navbar.component';
 import { EventsAppComponent } from './app.component';
 
@@ -55,6 +56,7 @@ let jQuery: Object = window['$'];
         UpvoteComponent,
         CollapsibleWellComponent,
         SimpleModalComponent,
+        EventDetailsPopupComponent,
         SessionDetailsComponent,
         CreateSessionComponent,
         CreateEventComponent,
