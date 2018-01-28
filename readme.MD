@@ -12,7 +12,7 @@ To clone this repository use command `git clone https://github.com/sergiylichenk
 ## Default Credentials
 
 To login into application use following credentials:  
-`username: admin,`  
+`username: admin`  
 `password: 1 `  
 
 ## Install Packages
@@ -25,12 +25,12 @@ Run `npm run startUI` for starting user interface. Navigate to `http://localhost
 
 ## Starting server
 
-Run 'npm run server' for launching backend server. Server will start on `http://localhost:4201/`
+Run `npm run server` for launching backend server. Server will start on `http://localhost:4201/`
 
 ## Production Mode
 
-Run `npm run postinstall` to create source files in `dist` folder. After that run `npm run server` and open `http://localhost:4201`.
+Run `npm run postinstall` to create source files in `dist` folder. After that run `npm run server` and open `http://localhost:4201`
 
 ## Running unit tests
 
-Run `npm test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `npm test` to execute the unit tests via [Karma](https://karma-runner.github.io)
