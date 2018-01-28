@@ -43,7 +43,7 @@ describe('VoterService', () => {
 
             //assert
             expect(mockHttp.delete).toHaveBeenCalledWith(
-                '/api/events/1/sessions/1/voters/Sergiy');
+                'http://localhost:4201/api/events/1/sessions/1/voters/Sergiy');
         });
     });
 
@@ -61,7 +61,7 @@ describe('VoterService', () => {
 
             //assert
             expect(mockHttp.post).toHaveBeenCalledWith(
-                '/api/events/2/sessions/1/voters/Lichenko', '{}', jasmine.any(Object));
+                'http://localhost:4201/api/events/2/sessions/1/voters/Lichenko', '{}', jasmine.any(Object));
         });
     });
 });

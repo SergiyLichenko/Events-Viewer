@@ -1,5 +1,7 @@
 import { ISession } from '../../index';
 import { SessionListComponent } from './session-list.component';
+import { Observable } from 'rxjs/Observable';
+import { ActivatedRoute } from '@angular/router';
 
 describe('SessionListComponent', () => {
 
@@ -7,7 +9,12 @@ describe('SessionListComponent', () => {
     let mockAuthService, mockVoterService;
 
     beforeEach(() => {
-        component = new SessionListComponent(mockVoterService, mockAuthService);
+        let mockActivatedRoute: any = { snapshot: { queryParams: {} } };
+        mockActivatedRoute.parent = { snapshot: { params: {} } };
+        let mockRouter: any = { events: Observable.of({}) };
+
+        mockActivatedRoute.data = Observable.of({});
+        component = new SessionListComponent(mockVoterService, mockActivatedRoute, mockRouter, mockAuthService);
     });
 
     describe('ogOnChanges', () => {
@@ -23,7 +30,7 @@ describe('SessionListComponent', () => {
             component.eventId = 3;
 
             //act
-            component.ngOnChanges(null);
+            component.onChange(component.filterBy, component.sortBy);
 
             //assert
             expect(component.visibleSessions.length).toBe(2);
@@ -41,7 +48,7 @@ describe('SessionListComponent', () => {
             component.eventId = 3;
 
             //act
-            component.ngOnChanges(null);
+            component.onChange(component.filterBy, component.sortBy);
 
             //assert
             expect(component.visibleSessions[0].name).toBe('session 1');
