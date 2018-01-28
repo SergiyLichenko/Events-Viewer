@@ -1,9 +1,10 @@
 # Events Viewer
 
-Application for showing upcoming events for a user, which is build using Angular 5 and TypeScript. Check this [demo](https://events-viewer.herokuapp.com/) (Note: first load may take some time)
+This application is build with Angular 5 and TypeScript and enables to view upcoming events for a user  
+Check this [demo](https://events-viewer.herokuapp.com/) (Note: first load may take some time)
 
 ## Preview
-[[https://github.com/SergiyLichenko/events-viewer/blob/master/src/assets/images/ng-preview.png]]
+![](https://github.com/SergiyLichenko/events-viewer/blob/master/src/assets/images/ng-preview.png)
 
 ## Clone Repository
 To clone this repository use command `git clone https://github.com/sergiylichenko/events-viewer`
@@ -12,8 +13,8 @@ To clone this repository use command `git clone https://github.com/sergiylichenk
 
 To login into application use following credentials:
 `
-  username: admin
-  password: 1
+  username: admin,  
+  password: 1  
 `
 
 ## Install Packages
