@@ -39,6 +39,7 @@ import { EventsAppComponent } from './app.component';
 
 import { AuthService } from './user/shared/auth.service';
 import { SessionListResolverService } from './events/event-details/session-list/session-list-resolver.service';
+import { CustomLoadStrategyService } from './custom-load-strategy.service';
 
 import './rxjs-extensions';
 
@@ -64,12 +65,11 @@ let jQuery: Object = window['$'];
         Error404Component,
         EventListComponent,
         DurationPipe],
-
     imports: [BrowserModule,
         ReactiveFormsModule,
         FormsModule,
         HttpModule,
-        AppRoutingModule,],
+        AppRoutingModule],
     providers: [
         EventService,
         EventResolver,
@@ -77,6 +77,7 @@ let jQuery: Object = window['$'];
         SessionDetailsResolverService,
         SessionListResolverService,
         VoterService,
+        CustomLoadStrategyService,
         EventsListResolveService,
         {
             provide: TOASTR_TOKEN,
